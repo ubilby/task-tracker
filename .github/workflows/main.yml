@@ -33,4 +33,4 @@ jobs:
     # Запускаем pytest
     - name: Test with pytest
       run: pytest |
-      run: python -m flake8
+           python -m flake8
