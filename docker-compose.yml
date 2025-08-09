@@ -1,29 +1,4 @@
 services:
   app:
-    build: .
-    container_name: my_app
-    depends_on:
-      - db
-    environment:
-      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
-    ports:
-      - "8000:8000"
-    volumes:
-      - .:/app
+    image: ubilby/task_tracker:lastest
     command: ["python", "main.py"]
-
-  db:
-    image: postgres:16
-    container_name: my_db
-    restart: always
-    environment:
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-      - POSTGRES_DB=${POSTGRES_DB}
-    volumes:
-      - db_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
-
-volumes:
-  db_data:
