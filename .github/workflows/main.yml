@@ -54,6 +54,8 @@ jobs:
           push: true
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/task_tracker:latest
+          context: ./bot
+          file: ./bot/Dockerfile
 
   deploy:
     name: Deploy to server via SSH
