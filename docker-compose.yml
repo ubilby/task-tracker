@@ -1,4 +1,4 @@
 services:
   app:
-    image: ubilby/task_tracker:lastest
+    image: ubilby/task_tracker:latest
     command: ["python", "main.py"]
