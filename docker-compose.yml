@@ -1,0 +1,6 @@
+services:
+  app:
+    image: ubilby/task_tracker:latest
+    # так добавляется файл с переменными окружения
+    # env_file: .env
+    command: ["python", "main.py"]
