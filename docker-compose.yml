@@ -1,12 +1,16 @@
 services:
   app:
-    # my pc
-    # build:
-    #   ./bot/
-
+    # local
+    build:
+      ./bot/
     # server
-    image: ubilby/task_tracker:latest
-    env_file: .env  # Подключаем .env файл для app
+    # image: ubilby/task_tracker:latest
+
+    # local
+    # env_file: ./bot/.env  # Подключаем .env файл для app
+    # server
+    env_file: .env
+
     command: ["python", "main.py"]
     depends_on:
       - db
@@ -19,7 +23,12 @@ services:
 
   db:
     image: postgres:latest
+
+    # local
+    # env_file: /Users/ubilby/code/python/pets/task-tracker/bot/.env  # Подключаем .env файл для db
+    # server
     env_file: .env  # Подключаем .env файл для db
+
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
