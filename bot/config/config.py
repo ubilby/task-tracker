@@ -1,18 +1,18 @@
 from dataclasses import dataclass
+
 from environs import Env
 
 
 @dataclass
 class TgBot:
-    token: str  # Токен для доступа к телеграм-боту
+    token: str
 
 
 @dataclass
 class LogSettings:
     level: str
     format: str
-    style: str = "{"  # По умолчанию '%', можно изменить на '{'
-
+    style: str = "{"
 
 
 @dataclass
@@ -25,7 +25,7 @@ def load_config(path: str | None = None) -> Config:
     env = Env()
     env.read_env(path)
     return Config(
-        bot=TgBot(token=env('BOT_TOKEN')),
+        bot=TgBot(token=env("BOT_TOKEN")),
         log=LogSettings(
             level=env("LOG_LEVEL"),
             format=env("LOG_FORMAT"),
