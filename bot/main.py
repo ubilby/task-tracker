@@ -7,12 +7,9 @@ from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from config.config import Config, load_config
 from handlers import other, user
+from db import init_db
 
-
-async def main() -> None:
-
-    config: Config = load_config()
-
+def init_logger(config: Config):
     formatter = logging.Formatter(
         fmt=config.log.format,
         style=config.log.style  # type: ignore #??
@@ -31,11 +28,20 @@ async def main() -> None:
         stream=stdout
     )
 
+
+async def main() -> None:
+
+    config: Config = load_config()
+    init_logger(config=config)
+
+    await init_db()
+
     bot = Bot(
         token=config.bot.token,
         default=DefaultBotProperties(parse_mode=ParseMode.HTML),
 
     )
+
     dp = Dispatcher()
 
     dp.include_router(user.router)
