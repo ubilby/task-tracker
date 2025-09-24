@@ -9,4 +9,5 @@ LEXICON_RU: dict[str, str] = {
     "Settings": "Настройки",
     "Search": "Поиск",
     "Archive": "Архив",
+    "no_tasks": "Не создана ни одна задача"
 }
