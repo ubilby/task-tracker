@@ -55,3 +55,4 @@ async def handle_text_message(message: Message):
     # создание таски
     logger.info(f"текст пойман {message}")
     await create_task(message)
+    await display_tasks(message)

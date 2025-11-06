@@ -61,6 +61,7 @@ class Task(Base):
     # сомневаюсь, что это поле нужно
     # title: Mapped[str]
     text: Mapped[str]
+    
     # Поле, которое будет хранить id родительского элемента
     # parent_id = Column(Integer, ForeignKey('tasks.id'))    
     # Отношение к родительскому элементу
